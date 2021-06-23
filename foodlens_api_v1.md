@@ -9,7 +9,7 @@ The Food API takes a food photo and returns a list of most likely foods together
 
 - JPEG 544x544px, approximate size 50-70kb (set the jpeg encoder quality setting to this size on an average photo)
 - Food in center and filling the frame.
-- The photo should not be upscaled by the client to match the 544x544px requirenment
+- The photo should not be upscaled by the client to match the 544x544px requirenment. For best results crop and scale to 544x544 from the oroginal photo size (eg. 12MP) 
 
 ## API Calls
 
@@ -108,14 +108,17 @@ Response: `Content-Type: application/json`
 **thumbnail** url to the thumbnail (only included if the **thumbnail** parameter is specified)
 
 #### Nutrition
-Nutritional information normalized to one unit of the food item. Usually this is 1kg however food items without servingWeight are not normalized.
-To get the absolute nutritional values multiply it by the **servingWeight** from the **servingSizes** field
+Nutritional information is normalized to one unit of the food item. Usually this is 1kg, however some food items are without servingWeight and are not normalized.
+To get the absolute nutritional values multiply it by the **servingWeight** from the **servingSizes** field.  If **servingWeight** is not included assume 1.0 for the purpose of calculation. 
 
 All values (including vitamins) are in kg.
 
 ### Serving Sizes
+
 **servingWeight** Total weight for this serving size in kg
+
 **unit** Serving size unit for display (localized)
+
 
 ## Localization
 
