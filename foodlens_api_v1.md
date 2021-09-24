@@ -16,12 +16,20 @@ The Food API takes a food photo and returns a list of most likely foods together
 Make a POST to `https://api2.azumio.com/v1/foodrecognition/full` with the photo as `Content-Type` `multipart/form-data` or `image/jpeg`
 together with your user_key. All calls MUST be made over https.
 
+When using user_key from https://dev.caloriemama.ai/ please use the https://api-2445582032290.production.gw.apicast.io/v1/foodrecognition/full endpoint.   
+
 The **top** parameter disables grouping and limits the number of returned results.
 
 Example API call:
 
     curl --request POST  -H "Content-Type: image/jpeg" --data-binary @apple.jpg "https://api2.azumio.com/v1/foodrecognition/full?top=5&user_key=abcd"
     
+Or for keys from https://dev.caloriemama.ai/ : 
+    
+    curl --request POST  -H "Content-Type: image/jpeg" --data-binary @apple.jpg "https://api-2445582032290.production.gw.apicast.io/v1/foodrecognition/full?top=5&user_key=abcd"
+
+ 
+
 Alternative authentication: 
 
 To keep the user_key our of the url and out of logs, use http basic authentication with username user_key and your user key as the password. (this methods is only available for customers with custom contract and is not available for keys from https://dev.caloriemama.ai/ )
